@@ -1,3 +1,4 @@
 .idea
 socket-card-game.iml
 node_modules
+npm-debug.log
