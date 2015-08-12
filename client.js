@@ -3,6 +3,7 @@ $(document).ready(function(){
     var socket = io.connect(location.hostname + ':3000');
     var lobbyList = $("#lobby-list");
     var lobbyCount = $("#lobby-count");
+    var playgroundTitle = $("#playground-title");
 
     $(document).on( "click", ".invite-link", function(){
         var player = $(this).parent().attr("id");
@@ -30,13 +31,18 @@ $(document).ready(function(){
         $("#" + socket).remove();
     });
 
-    socket.on('receive_invite', function(player) {
-        console.log("Received invite from", player);
+    socket.on('receive_invite', function(game, player) {
+        console.log("Received invite from", player, "for", game);
         if (confirm(player.username + " wants to play a game with you! Do you accept?")) {
-            console.log(player.socket, "vs", socket.id);
+            socket.emit("accept_invite", player.socket, game.id);
+            startGame(game, player);
         } else {
-            console.log("Declined invite");
+            socket.emit("decline_invite", player.socket, game.id);
         }
+    });
+
+    socket.on('invite_accepted', function(game, player){
+        startGame(game, player);
     });
 
     function userEntry(user) {
@@ -53,5 +59,11 @@ $(document).ready(function(){
         });
         lobbyCount.text(count);
         lobbyList.empty().append(list);
+    }
+
+    function startGame(game, player) {
+        console.log(game);
+        console.log(player);
+        playgroundTitle.html(game.id);
     }
 });

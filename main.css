@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Verdana, Helvetica, sans-serif;
+}
+
+#welcome, #lobby, #playground {
+    box-shadow: 10px 10px 5px #ccc;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+#welcome {
+    clear: both;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+#lobby {
+    width: 300px;
+    float: left;
+    margin-right: 20px;
+}
+#playground {
+    float: left;
+}
