@@ -4,16 +4,20 @@ body {
     font-family: Verdana, Helvetica, sans-serif;
 }
 
-#welcome, #lobby, #playground {
+#welcome, #notify, #lobby, #playground {
     box-shadow: 10px 10px 5px #ccc;
     border: 1px solid #ccc;
     padding: 5px;
 }
 
-#welcome {
+#welcome, #notify {
     clear: both;
     margin-bottom: 20px;
     padding: 5px;
+}
+#notify {
+    background-color: #ffe87c;
+    border-color: #ffc520;
 }
 #lobby {
     width: 300px;
@@ -21,5 +25,6 @@ body {
     margin-right: 20px;
 }
 #playground {
+    width: 600px;
     float: left;
 }
